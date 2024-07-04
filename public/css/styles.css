@@ -4,3 +4,363 @@
 *:after {
   box-sizing: border-box;
 }
+html {
+  background-image: url("/images/site/checkerboard.jpg");
+  background-size: 400px 400px;
+}
+body{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 5%;
+  border: solid 10px turquoise;
+  border-radius: 5px;
+  background-color: white;
+}
+#top-header{
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+.siteName{
+    font-size: 2rem;
+    font-weight: 700;
+    color: black;
+}
+.siteName a{
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+}
+#tools{
+    position:absolute;
+    top: 40px;
+    right: 13%;
+    font-size: 1.2rem;
+    color: black;
+}
+#tools a{
+    color: black;
+    text-decoration: none;
+}
+nav{
+    background-color: black;
+    color: white;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+nav ul{
+  margin-left: 10%;
+}
+nav li{
+    display: inline;
+    margin-right: 10%;
+    width: 100%;
+    font-size: 1.2rem;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+}
+h1 {
+  color: black;
+  font-size: 3rem;
+  margin-left: 10%;
+}
+#Hero {
+  position: relative;
+  display: flex; 
+  flex-direction: column;
+  background-image: url('/images/vehicles/delorean.jpg'); 
+  background-size: contain; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  color: black;
+  font-size: 2rem;
+  margin-left: 10%;
+  width: 80%;
+
+}
+.hero-box {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgb(46, 121, 156);
+  margin-left: 5%;
+  width: 40%;
+  height: 65%;
+  font-size: 1.3rem;
+}
+.hero-box p {
+  margin: 5px;
+}
+
+#hero-button {
+  background-color: turquoise;
+  color: black;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 90%;
+}
+#home-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#upgrade-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.upgrade-box{
+  justify-content: center;
+}
+.upgrade-box img{
+  background-color: turquoise;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  height: 125px;
+  border: teal 1px solid;
+  border-radius: 5px;
+}
+.home-box{
+  font-size: 1.5rem;
+}
+.home-box li{
+  margin-bottom: 10px;
+}
+
+/*=====================================*/
+/*======== Inv Display ================*/
+/*=====================================*/
+
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  list-style: none;
+  padding: 10px;
+  width: 90%; /* or any other value that suits your design */
+  margin: auto;
+  justify-self: center;
+}
+.inv-box {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgb(46, 121, 156);
+  padding: 10px;
+  border: black 1px solid;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inv-box a {
+  height: 170px;
+}
+.inv-box a img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.inv-box p {
+  text-align: center;
+  width: 100%;
+}
+
+/*=====================================*/
+/*======== Procuct Display ============*/
+/*=====================================*/
+
+#product-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  align-items: start;
+}
+
+#product-display img {
+  grid-column: 1;
+  width: 80%;
+  height: auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.product-details {
+  grid-column: 2;
+  font-size: 1.3rem;
+  padding: 20px;
+}
+
+/*=====================================*/
+/*======== Login  =====================*/
+ 
+form {
+  background-color: #fff;
+  width: 400px;
+  padding: 20px;
+  padding-left: 40px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+input:required {
+  border-left: 3px solid red;
+}
+
+input:valid {
+  border-left: 3px solid green;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+form h2{
+  text-align: center;
+  margin-bottom: 20px;
+
+}
+
+#classificationList {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  font-size: 16px;
+}
+
+#classificationList option {
+  padding: 10px;
+}
+
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#inventoryDisplay th, #inventoryDisplay td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#inventoryDisplay tr:hover {
+  background-color: #ddd;
+}
+
+#inventoryDisplay th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+noscript {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*=====================================*/
+/*=====================================*/
+/*======== Media Queries ============= */
+/*=====================================*/
+/*=====================================*/
+
+@media screen and (max-width: 800px){
+  body{
+    width: 90%;
+  }
+  #home-grid{
+    grid-template-columns: 1fr;
+  }
+  .upgrade-box{
+    width: 80%;
+  }
+  h1{
+    font-size: 2rem;
+  }
+  nav ul{
+    margin-left: 5%;
+  }
+  nav li{
+    margin: 3%;
+  }
+  .hero-box {
+    margin-left: 5%;
+    width: 30%;
+    font-size: 1rem;
+    height: 45%;
+  }
+
+  #product-display {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    align-items: start;
+  }
+  #product-display img {
+    grid-column: 2;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+}
+@media screen and (max-width: 600px) {
+  body {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+  }
+  #tools{
+    top: 10px;
+  }
+  nav ul {
+    margin-left: 0;
+  }
+  .hero-box{
+    width: 40%;
+  }
+
+
+}

@@ -1,0 +1,62 @@
+<h1>Index.ejs</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titlestone | CSE Motors App</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div id=wrapper">
+    <header id="top-header">
+      <span class="siteName">
+        <a href="/" title="Return to home page">CSE Motors</a>
+      </span>
+
+      <%- include('partials/header.ejs') %>
+      <%- include('partials/navigation.ejs') %>
+      <main>
+        <section class="hero">
+          <h1>Welcome to CSE Motors</h1>
+          <p>Your one-stop shop for all your automotive needs.</p>
+          <img src="/images/hero.jpg" alt="CSE Motors Hero Image">
+        </section>
+        <section class="services">
+          <h2>Our Services</h2>
+          <ul>
+
+            <li>Car Sales</li>
+            <li>Maintenance</li>
+            <li>Repairs</li>
+          </ul>
+        </section>
+        <section class="welcome">
+          <h2>Welcome to CSE Motors!</h2>
+          <ul>
+            <li>3 Cup holders</li>
+            <li>Superman doors</li>
+            <li>Fuzzy dice included</li>
+          </ul>
+        </section>
+        <section class="delorean">
+          <h2>DMC Delorean</h2>
+          <img src="/images/delorean.jpg" alt="DMC Delorean">
+          <button>Flux Capacitors</button>
+          <button>Flame Decals</button>
+        </section>
+        <section class="reviews">
+          <h2>Delorean Reviews</h2>
+          <ul>
+            <li>"So fast it's almost like traveling in time." (4/5)</li>
+            <li>"Coolest ride on the road." (4/5)</li>
+            <li>"I'm feeling McFly!" (5/5)</li>
+          </ul>
+        </section>
+      </main>
+      <%- include('partials/footer.ejs') %>
+</body>
+
+</html>
