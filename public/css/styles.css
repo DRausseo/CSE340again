@@ -13,7 +13,7 @@ body{
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 5%;
-  border: solid 10px turquoise;
+  border: solid 10px rgb(185, 231, 226);
   border-radius: 5px;
   background-color: white;
 }
@@ -94,7 +94,7 @@ h1 {
 }
 
 #hero-button {
-  background-color: turquoise;
+  background-color: rgb(183, 241, 236);
   color: black;
   padding: 10px 20px;
   margin-top: 10px;
@@ -121,7 +121,7 @@ h1 {
   justify-content: center;
 }
 .upgrade-box img{
-  background-color: turquoise;
+  background-color: rgb(182, 227, 223);
   color: white;
   padding: 20px;
   width: 100%;
@@ -136,9 +136,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-/*=====================================*/
 /*======== Inv Display ================*/
-/*=====================================*/
 
 #inv-display {
   display: grid;
@@ -152,7 +150,7 @@ h1 {
 }
 .inv-box {
   background-color: rgba(255, 255, 255, 0.5);
-  color: rgb(46, 121, 156);
+  color: rgb(49, 220, 246);
   padding: 10px;
   border: black 1px solid;
   border-radius: 5px;
@@ -176,9 +174,8 @@ h1 {
   width: 100%;
 }
 
-/*=====================================*/
+
 /*======== Procuct Display ============*/
-/*=====================================*/
 
 #product-display {
   display: grid;
@@ -201,7 +198,6 @@ h1 {
   padding: 20px;
 }
 
-/*=====================================*/
 /*======== Login  =====================*/
  
 form {
@@ -226,11 +222,11 @@ input {
   border: 1px solid #ddd;
 }
 input:required {
-  border-left: 3px solid red;
+  border-left: 3px solid rgba(0, 208, 255, 0.063);
 }
 
 input:valid {
-  border-left: 3px solid green;
+  border-left: 3px solid rgba(20, 184, 221, 0.934);
 }
 
 button {
@@ -298,11 +294,8 @@ noscript {
   text-align: center;
 }
 
-/*=====================================*/
-/*=====================================*/
+
 /*======== Media Queries ============= */
-/*=====================================*/
-/*=====================================*/
 
 @media screen and (max-width: 800px){
   body{
