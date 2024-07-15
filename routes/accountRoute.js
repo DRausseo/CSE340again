@@ -1,6 +1,6 @@
 const express = require("express");
 const router = new express.Router();
-const util = require("../utilities/index");
+const utilities = require("../utilities/index");
 const accountController = require("../controllers/accountController");
 const regValidate = require("../utilities/account-validation");
 
@@ -14,5 +14,11 @@ router.post(
 );
 
 router.get("/account/", accountController.buildAccManager);
-
+router.post("/login", accountController.accountLogin);
 module.exports = router;
+
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccManager)
+);

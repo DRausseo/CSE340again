@@ -13,5 +13,9 @@ router.get("/manage-inv", invController.buildManager);
 router.get("/json/:classification_id", invController.getInventoryJSON);
 router.get("/edit/:inv_id", invController.editInventoryView);
 router.post("/update-inventory", invController.updateInventory);
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+);
 
 module.exports = router;
