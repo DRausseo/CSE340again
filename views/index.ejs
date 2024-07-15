@@ -1,4 +1,3 @@
-<h1>Index.ejs</h1>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,53 +9,95 @@
 </head>
 
 <body>
-  <div id=wrapper">
+  <div id="wrapper">
     <header id="top-header">
       <span class="siteName">
         <a href="/" title="Return to home page">CSE Motors</a>
       </span>
+    </header>
 
-      <%- include('partials/header.ejs') %>
-      <%- include('partials/navigation.ejs') %>
-      <main>
-        <section class="hero">
-          <h1>Welcome to CSE Motors</h1>
-          <p>Your one-stop shop for all your automotive needs.</p>
-          <img src="/images/hero.jpg" alt="CSE Motors Hero Image">
-        </section>
-        <section class="services">
-          <h2>Our Services</h2>
-          <ul>
+    <%- include('partials/header') %>
+    <%- include('partials/navigation') %>
 
-            <li>Car Sales</li>
-            <li>Maintenance</li>
-            <li>Repairs</li>
-          </ul>
-        </section>
-        <section class="welcome">
-          <h2>Welcome to CSE Motors!</h2>
-          <ul>
-            <li>3 Cup holders</li>
-            <li>Superman doors</li>
-            <li>Fuzzy dice included</li>
-          </ul>
-        </section>
-        <section class="delorean">
+    <main>
+      <section class="hero">
+        <h1>Welcome to CSE Motors</h1>
+        <p>Your one-stop shop for all your automotive needs.</p>
+        <img src="/images/hero.jpg" alt="CSE Motors Hero Image">
+      </section>
+
+      <section class="services">
+        <h2>Our Services</h2>
+        <ul>
+          <li>Car Sales</li>
+          <li>Maintenance</li>
+          <li>Repairs</li>
+        </ul>
+      </section>
+
+      <section class="welcome">
+        <h2>Welcome to CSE Motors!</h2>
+        <ul>
+          <li>3 Cup holders</li>
+          <li>Superman doors</li>
+          <li>Fuzzy dice included</li>
+        </ul>
+      </section>
+
+      <section class="delorean">
+        <h2>DMC Delorean</h2>
+        <img src="/images/delorean.jpg" alt="DMC Delorean">
+        <button>Flux Capacitors</button>
+        <button>Flame Decals</button>
+      </section>
+
+      <section class="hero">
+        <img src="images/vehicles/delorean.jpg" alt="CSE Motors hero image">
+        <section class="call-action">
           <h2>DMC Delorean</h2>
-          <img src="/images/delorean.jpg" alt="DMC Delorean">
-          <button>Flux Capacitors</button>
-          <button>Flame Decals</button>
+          <p>3 Cup holders</p>
+          <p>Superman doors</p>
+          <p>Fuzzy dice!</p>
+          <button>Own Today</button>
         </section>
-        <section class="reviews">
-          <h2>Delorean Reviews</h2>
-          <ul>
-            <li>"So fast it's almost like traveling in time." (4/5)</li>
-            <li>"Coolest ride on the road." (4/5)</li>
-            <li>"I'm feeling McFly!" (5/5)</li>
-          </ul>
-        </section>
-      </main>
-      <%- include('partials/footer.ejs') %>
+      </section>
+
+      <section class="upgrades">
+        <h2>Delorean Upgrades</h2>
+        <div class="upgrades-container">
+          <a href="#">
+            <img src="/images/upgrades/flux-cap.png" alt="Flux capacitor image">
+            <p>Flux Capacitor</p>
+          </a>
+          <a href="#" title="Click to learn more">
+            <img src="/images/upgrades/flame.jpg" alt="flame decals image">
+            <p>Flame Decals</p>
+          </a>
+          <a href="#" title="Click to learn more">
+            <img src="/images/upgrades/bumper_sticker.jpg" alt="bumper sticker image">
+            <p>Bumper Sticker</p>
+          </a>
+          <a href="#">
+            <img src="/images/upgrades/hub-cap.jpg" alt="hub caps image">
+            <p>Hub Caps</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="reviews">
+        <h2>DMC Delorean Reviews</h2>
+        <ul>
+          <li>"So fast it's almost like traveling in time."(4/5)</li>
+          <li>"Coolest ride on the road."(4/5)</li>
+          <li>"I'm feeling McFly!"(5/5)</li>
+          <li>"The most futuristic ride of our day."(4.5/5)</li>
+          <li>"80's livin and I love it!."(5/5)</li>
+        </ul>
+      </section>
+
+    </main>
+    <%- include('partials/footer') %>
+  </div>
 </body>
 
 </html>

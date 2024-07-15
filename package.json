@@ -1,0 +1,23 @@
+{
+  "name": "cse340again",
+  "version": "1.0.0",
+  "description": "Starter project for CSE 340",
+  "main": "1.1.0",
+  "scripts": {
+    "test": "nodemon",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drausseo/CSE340again.git"
+  },
+  "keywords": [
+    "COFMvTBIFeZXdfTlwECxZwh6nnnDeiB"
+  ],
+  "author": "Danny Rausseo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drausseo/CSE340again/issues"
+  },
+  "homepage": "https://github.com/Drausseo/CSE340again#readme"
+}
