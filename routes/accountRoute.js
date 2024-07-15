@@ -7,12 +7,12 @@ const regValidate = require("../utilities/account-validation");
 router.get("/login", accountController.buildLogin);
 router.get("/register", accountController.buildRegister);
 router.post(
-  "/register",
+  "/login",
   regValidate.registationRules(),
   regValidate.checkRegData,
-  accountController.registerAccount // Asegúrate de usar el nombre correcto de la función
+  utilities.handleErrors(accountController.accountLogin)
 );
 
-router.post("/login", accountController.accountLogin);
+router.get("/account/", accountController.buildAccManager);
 
 module.exports = router;

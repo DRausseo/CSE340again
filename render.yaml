@@ -1,0 +1,12 @@
+# Exported from Render on 2024-07-15T03:13:05Z
+databases:
+- name: cse340again
+  databaseName: cse340again_vff9
+  user: cse340again
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+version: "1"
