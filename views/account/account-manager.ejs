@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account Management</title>
-  </head>
+<% include ../partials/head %>
+<% include ../partials/header %>
+
 <body>
   <h1>Account Management</h1>
-  <p>You're logged in!</p>
-  </body>
+
+  <main>
+    <h2>Welcome <%= client.firstname %></h2>
+    <% if (client.account_type === 'Employee' || client.account_type === 'Admin') { %>
+      <h3>Inventory Management</h3>
+      <p><a href="/inventory/management">Manage Inventory</a></p>
+    <% } %>
+    <p><a href="/account/update/<%= client.account_id %>">Update Account Information</a></p>
+  </main>
+
+  <% include ../partials/footer %>
+</body>
 </html>
 

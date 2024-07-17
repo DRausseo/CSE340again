@@ -53,12 +53,14 @@ async function registerAccount(req, res) {
     });
   }
 
-  const regResult = await accountModel.registerAccount(
-    account_firstname,
-    account_lastname,
-    account_email,
-    hashedPassword
-  );
+  const regResult =
+    (await account) -
+    Model.registerAccount(
+      account_firstname,
+      account_lastname,
+      account_email,
+      hashedPassword
+    );
 
   if (regResult) {
     req.flash(
@@ -143,4 +145,49 @@ module.exports = {
   registerAccount,
   accountLogin,
   buildAccManager,
+};
+
+/* ***************************
+ *  Deliver the update account view
+ * ************************** */
+exports.getUpdateAccountView = async (req, res) => {
+  const account_id = parseInt(req.params.account_id);
+  const client = await accountModel.getAccountById(account_id);
+  res.render("account/update-account", { title: "Update Account", client });
+};
+
+/* ***************************
+ *  Handle the account update
+ * ************************** */
+exports.updateAccount = async (req, res) => {
+  const { account_id, firstname, lastname, email } = req.body;
+  const result = await accountModel.updateAccount(
+    account_id,
+    firstname,
+    lastname,
+    email
+  );
+  if (result) {
+    req.flash("success", "Account updated successfully.");
+    res.redirect("/account");
+  } else {
+    req.flash("error", "Failed to update account.");
+    res.redirect(`/account/update/${account_id}`);
+  }
+};
+
+/* ***************************
+ *  Handle the password change
+ * ************************** */
+exports.changePassword = async (req, res) => {
+  const { account_id, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const result = await accountModel.updatePassword(account_id, hashedPassword);
+  if (result) {
+    req.flash("success", "Password changed successfully.");
+    res.redirect("/account");
+  } else {
+    req.flash("error", "Failed to change password.");
+    res.redirect(`/account/update/${account_id}`);
+  }
 };

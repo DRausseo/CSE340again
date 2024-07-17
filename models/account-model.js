@@ -1,4 +1,4 @@
-const pool = require("../../database/index.js");
+const pool = require("../database/index.js");
 
 /*Register Account*/
 async function registerAccount(
