@@ -1,0 +1,28 @@
+<% include ../partials/head %>
+<% include ../partials/header %>
+<% include ../partials/navigation %>
+
+<main>
+    <h1>Delete Inventory Item</h1>
+    <p>Confirm Deletion - The delete is permanent.</p>
+
+    <form action="/inventory/delete" method="post">
+        <input type="hidden" name="inv_id" value="<%= inventory.inv_id %>">
+        
+        <label for="make">Make</label>
+        <input type="text" id="make" name="make" value="<%= inventory.make %>" readonly>
+        
+        <label for="model">Model</label>
+        <input type="text" id="model" name="model" value="<%= inventory.model %>" readonly>
+        
+        <label for="year">Year</label>
+        <input type="text" id="year" name="year" value="<%= inventory.year %>" readonly>
+        
+        <label for="price">Price</label>
+        <input type="text" id="price" name="price" value="<%= inventory.price %>" readonly>
+        
+        <button type="submit">Delete</button>
+    </form>
+</main>
+
+<% include ../partials/footer %>

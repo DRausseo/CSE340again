@@ -25,5 +25,7 @@ router.get(
   "/getInventory/:classification_id",
   utilities.handleErrors(invController.getInventoryJSON)
 );
+router.get("/delete/:inv_id", invController.getDeleteInventoryView);
+router.post("delete", invController.deleteInventoryItem);
 
 module.exports = router;
