@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titlestone | CSE Motors App</title>
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
 
-<body>
-  <div id="wrapper">
-    <header id="top-header">
-      <span class="siteName">
-        <a href="/" title="Return to home page">CSE Motors</a>
-      </span>
-    </header>
-
-    <%- include('partials/header') %>
-    <%- include('partials/navigation') %>
+    <% include partials/head %>
+    <% include partials/header %>
+    <% include partials/navigation %>
 
     <main>
       <section class="hero">
         <h1>Welcome to CSE Motors</h1>
         <p>Your one-stop shop for all your automotive needs.</p>
-        <img src="/images/hero.jpg" alt="CSE Motors Hero Image">
+        <p>Your trusted car dealership.</p>
+        <img src="/images/large-screen.png" alt="CSE Motors for large screen" class="large-screen">
+        <img src="/images/mobile-screen.png" alt="CSE Motors for mobile screen" class="mobile-screen">
       </section>
 
       <section class="services">

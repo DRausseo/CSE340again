@@ -1,18 +1,17 @@
-const utilities = require(".");
 const { body, validationResult } = require("express-validator");
+const utilities = require(".");
 const validate = {};
 
 validate.regRules = () => {
   return [
-    // classification is required and must be string
     body("classification_name")
       .trim()
       .escape()
       .notEmpty()
       .isAlpha()
-      .withMessage("Please provide a classification with only letters.") // on error this message is sent.
+      .withMessage("Please provide a classification with only letters.")
       .isLength({ min: 2 })
-      .withMessage("Please provide a classification."), // on error this message is sent.
+      .withMessage("Please provide a classification."),
   ];
 };
 

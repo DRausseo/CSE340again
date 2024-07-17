@@ -1,8 +1,15 @@
-<h1>Add new Vehicle</h1>
-<form action="/inv/add-inventory" method="post">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Inventory</title>
+</head>
+<body>
+    <%- include('../partials/header'); -%>
 
-  <label for="classification_id">Classification:</label>
-  <%- classificationList %>
+<h1>Add new Vehicle</h1>
+<form action="/inv/update" method="post">
 
   <label for="inv_make">Make:</label>
   <input type="text" id="inv_make" name="inv_make" pattern="[A-Za-z]+" required>
@@ -31,5 +38,21 @@
   <label for="inv_color">Color:</label>
   <input type="text" id="inv_color" name="inv_color" pattern="[A-Za-z]+" required>
 
-  <button type="submit">Submit</button>
+  <input type="submit" name="submit" value="Update Vehicle">
+  <button type="submit">Update Vehicle</button>
+
+  
+  
+  <label for="classification_id">Classification</label>
+  <select id="classification_id" name="classification_id">
+      <%- classificationSelect %>
+  </select>
+
+  <input type="hidden" name="inv_id" value="<%= inv_id %>">
+
+  <input type="submit" name="submit" value="Update Vehicle">
 </form>
+
+<%- include('../partials/footer'); -%>
+</body>
+</html>
