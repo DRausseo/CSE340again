@@ -9,7 +9,7 @@ const session = require("express-session");
 const pool = require("./database/");
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
-const env = require("dotenv").config();
+require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
 const app = express();
 const staticRoutes = require("./routes/static");
 const utilities = require("./utilities");
@@ -47,25 +47,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+// Middleware para verificar JWT
 app.use(utilities.checkJWTToken);
 
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); // not at views root
+app.set("layout", "./layouts/layout"); // Ruta de la plantilla de layout
 
 app.use(staticRoutes);
 
 // Routes
-// indexRoute
+// Ruta para la página principal
 app.get("/", baseController.buildHome);
 
-// inventoryRoute
+// Rutas del inventario
 app.use("/inv", inventoryRoute);
 
-// accountRoute
+// Rutas de la cuenta
 app.use("/account", accountRoute);
 
-// errorRoute
+// Ruta para manejar errores
 app.get("/trigger-error", baseController.triggerError);
 
 app.use(function (err, req, res, next) {
