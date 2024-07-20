@@ -1,120 +1,58 @@
-
-
-    <% include partials/head %>
-    <% include partials/header %>
-    <% include partials/navigation %>
-
-    <main>
-      <section class="hero">
-        <h1>Welcome to CSE Motors</h1>
-        <p>Your one-stop shop for all your automotive needs.</p>
-        <p>Your trusted car dealership.</p>
-        <img src="/images/site/checkerboard.jpg" alt="Checkerboard">
-        <img src="/images/site/favicon-32x32.png" alt="Favicon">
-        <img src="/images/site/icon.png" alt="Icon">
-        <img src="/images/site/own_today.png" alt="Own Today">
-        <img src="/images/site/small_check.jpg" alt="Small Check">
-        <img src="/images/site/small_check.png" alt="Small Check">
-      
-        <h3>Upgrades</h3>
-        <img src="/images/upgrades/bumper_sticker.jpg" alt="Bumper Sticker">
-        <img src="/images/upgrades/flame.jpg" alt="Flame">
-        <img src="/images/upgrades/flux-cap.png" alt="Flux Cap">
-        <img src="/images/upgrades/hub-cap.jpg" alt="Hub Cap">
-                  
-        <div class="vehicles">
-          <img src="/images/vehicles/adventador.jpg" alt="Adventador">
-          <img src="/images/vehicles/aerocar.jpg" alt="Aerocar">
-          <img src="/images/vehicles/batmobile.jpg" alt="Batmobile">
-          <img src="/images/vehicles/camaro.jpg" alt="Camaro">
-          <img src="/images/vehicles/crwn-vic.jpg" alt="Crown Vic">
-          <img src="/images/vehicles/delorean.jpg" alt="Delorean">
-          <img src="/images/vehicles/dog-car.jpg" alt="Dog Car">
-          <img src="/images/vehicles/escalade.jpg" alt="Escalade">
-          <img src="/images/vehicles/fire-truck.jpg" alt="Fire Truck">
-          <img src="/images/vehicles/hummer.jpg" alt="Hummer">
-          <img src="/images/vehicles/mechanic.jpg" alt="Mechanic">
-          <img src="/images/vehicles/model-t.jpg" alt="Model T">
-          <img src="/images/vehicles/monster-truck.jpg" alt="Monster Truck">
-          <img src="/images/vehicles/mystery-van.jpg" alt="Mystery Van">
-          <img src="/images/vehicles/no-image.png" alt="No Image">
-          <img src="/images/vehicles/survan.jpg" alt="Survan">
-          <img src="/images/vehicles/wrangler.jpg" alt="Wrangler">
+<main>
+  <!-- Hero image section -->
+  <section class="welcome">
+      <h2>Welcome to CSE Motors!</h2>
+      <div class="hero">
+          <picture>
+              <source media="(max-width: 400px)" srcset="images/vehicles/delorean-tn.jpg">
+              <source media="(max-width: 960px)" srcset="images/vehicles/delorean.jpg">
+              <img src="images/vehicles/delorean.jpg" alt="DMC Delorean" class="centered-image">
+          </picture>
+          <div class="hero-text">
+              <h3>DMC Delorean</h3>
+              <p>3 Cup holders</p>
+              <p>Superman doors</p>
+              <p>Fuzzy dice!</p>
+              <a href="#" class="button-image"><img src="images/site/own_today.png" alt="Own today "></a>
+          </div>
       </div>
-      </section>
+  </section>
 
-      <section class="services">
-        <h2>Our Services</h2>
-        <ul>
-          <li>Car Sales</li>
-          <li>Maintenance</li>
-          <li>Repairs</li>
-        </ul>
-      </section>
-
-      <section class="welcome">
-        <h2>Welcome to CSE Motors!</h2>
-        <ul>
-          <li>3 Cup holders</li>
-          <li>Superman doors</li>
-          <li>Fuzzy dice included</li>
-        </ul>
-      </section>
-
-      <section class="delorean">
-        <h2>DMC Delorean</h2>
-        <img src="/images/delorean.jpg" alt="DMC Delorean">
-        <button>Flux Capacitors</button>
-        <button>Flame Decals</button>
-      </section>
-
-      <section class="hero">
-        <img src="images/vehicles/delorean.jpg" alt="CSE Motors hero image">
-        <section class="call-action">
-          <h2>DMC Delorean</h2>
-          <p>3 Cup holders</p>
-          <p>Superman doors</p>
-          <p>Fuzzy dice!</p>
-          <button>Own Today</button>
-        </section>
-      </section>
-
+  <!-- Upgrades and Reviews section -->
+  <h3>Delorean Upgrades</h3>
+  <div class="grid-container">
+      <!-- Upgrades section -->
+       
       <section class="upgrades">
-        <h2>Delorean Upgrades</h2>
-        <div class="upgrades-container">
-          <a href="#">
-            <img src="/images/upgrades/flux-cap.png" alt="Flux capacitor image">
-            <p>Flux Capacitor</p>
-          </a>
-          <a href="#" title="Click to learn more">
-            <img src="/images/upgrades/flame.jpg" alt="flame decals image">
-            <p>Flame Decals</p>
-          </a>
-          <a href="#" title="Click to learn more">
-            <img src="/images/upgrades/bumper_sticker.jpg" alt="bumper sticker image">
-            <p>Bumper Sticker</p>
-          </a>
-          <a href="#">
-            <img src="/images/upgrades/hub-cap.jpg" alt="hub caps image">
-            <p>Hub Caps</p>
-          </a>
-        </div>
+          
+          <div class="card">
+              <img src="images/upgrades/flux-cap.png" alt="Flux cap image">
+              <a href="#"><p>Flux Capacitor</p></a>
+          </div>
+          <div class="card">
+              <img src="images/upgrades/flame.jpg" alt="Flame Decals">
+              <a href="#"><p>Flame Decals</p></a>
+          </div>
+          <div class="card">
+              <img src="images/upgrades/bumper_sticker.jpg" alt="Bumper Sticker">
+              <a href="#"><p>Bumper Stickers</p></a>
+          </div>
+          <div class="card">
+              <img src="images/upgrades/hub-cap.jpg" alt="Hub Cap">
+              <a href="#"><p>Hub Caps</p></a>
+          </div>
       </section>
 
+      <!-- Reviews section -->
       <section class="reviews">
-        <h2>DMC Delorean Reviews</h2>
-        <ul>
-          <li>"So fast it's almost like traveling in time."(4/5)</li>
-          <li>"Coolest ride on the road."(4/5)</li>
-          <li>"I'm feeling McFly!"(5/5)</li>
-          <li>"The most futuristic ride of our day."(4.5/5)</li>
-          <li>"80's livin and I love it!."(5/5)</li>
-        </ul>
+          <h3>DMC Delorean Reviews</h3>
+          <ul>
+              <li>"So fast it's almost like traveling in time." (4/5)</li>
+              <li>"Coolest ride on the road." (4/5)</li>
+              <li>"I'm feeling McFly!" (5/5)</li>
+              <li>"The most futuristic ride of our day." (4/5)</li>
+              <li>"80's livin and I love it!" (5/5)</li>
+          </ul>
       </section>
-
-    </main>
-    <%- include('partials/footer') %>
   </div>
-</body>
-
-</html>
+</main>    

@@ -4,356 +4,392 @@
 *:after {
   box-sizing: border-box;
 }
-html {
-  background-image: url("/images/site/checkerboard.jpg");
-  background-size: 400px 400px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 5%;
-  border: solid 10px rgb(185, 231, 226);
-  border-radius: 5px;
-  background-color: white;
+
+:root {
+  --primary-color: #040c14;
+  --secondary-color: #FF3333;
+  --accent-color: #C0C0C0;
+  --background-color: #F5F5F5;
+  --text-color: #333333;
+  --header-text-color: #FFFFFF;
 }
-#top-header{
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    border-bottom: 1px solid #e9ecef;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  
 }
-.siteName{
-    font-size: 2rem;
-    font-weight: 700;
-    color: black;
-}
-.siteName a{
-    text-decoration: none;
-    color: black;
-    margin-left: 10px;
-}
-#tools{
-    position:absolute;
-    top: 40px;
-    right: 13%;
-    font-size: 1.2rem;
-    color: black;
-}
-#tools a{
-    color: black;
-    text-decoration: none;
-}
-nav{
-    background-color: black;
-    color: white;
-    padding: 10px 0;
-    border-bottom: 1px solid #e9ecef;
-}
-nav ul{
-  margin-left: 10%;
-}
-nav li{
-    display: inline;
-    margin-right: 10%;
-    width: 100%;
-    font-size: 1.2rem;
-}
-nav a{
-    color: white;
-    text-decoration: none;
-}
+
 h1 {
-  color: black;
-  font-size: 3rem;
-  margin-left: 10%;
-}
-#Hero {
-  position: relative;
-  display: flex; 
-  flex-direction: column;
-  background-image: url('/images/vehicles/delorean.jpg'); 
-  background-size: contain; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  color: black;
-  font-size: 2rem;
-  margin-left: 10%;
-  width: 80%;
-
-}
-.hero-box {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: rgb(46, 121, 156);
-  margin-left: 5%;
-  width: 40%;
-  height: 65%;
-  font-size: 1.3rem;
-}
-.hero-box p {
-  margin: 5px;
+  text-align: left;
+  font-family: times, serif;
+  font-size: 1.5rem;
+  margin-left: 1rem;
 }
 
-#hero-button {
-  background-color: rgb(183, 241, 236);
-  color: black;
-  padding: 10px 20px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 90%;
+nav {
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px;
 }
-#home-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
+
+nav {
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px;
 }
-#upgrade-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.upgrade-box{
+
+.navigation ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navigation li {
+  margin: 0;
+}
+
+.navigation a {
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.navigation a:hover {
+  background-color: #575757;
+}
+
+.navigation .active {
+  background-color: var(--secondary-color);
+}
+
+/* -------------Display styles begin here ----------------- */
+/* Inventory Display List */
+#inv-display {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
-.upgrade-box img{
-  background-color: rgb(182, 227, 223);
-  color: white;
-  padding: 20px;
-  width: 100%;
-  height: 125px;
-  border: teal 1px solid;
+
+/* Inventory Item */
+#inv-display li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  width: calc(33% - 20px); /* Responsive three-column layout */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+#inv-display li:hover {
+  transform: scale(1.05);
+}
+
+/* Image Styling */
+#inv-display li img {
+  max-width: 100%;
+  height: auto;
   border-radius: 5px;
-}
-.home-box{
-  font-size: 1.5rem;
-}
-.home-box li{
   margin-bottom: 10px;
 }
 
-/*======== Inv Display ================*/
-
-#inv-display {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 20px;
-  list-style: none;
-  padding: 10px;
-  width: 90%; /* or any other value that suits your design */
-  margin: auto;
-  justify-self: center;
+/* Name and Price Styling */
+#inv-display .namePrice {
+  text-align: center;
 }
-.inv-box {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: rgb(49, 220, 246);
-  padding: 10px;
-  border: black 1px solid;
-  border-radius: 5px;
-  font-size: 1.3rem;
+
+#inv-display .namePrice h2 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+#inv-display .namePrice span {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold;
+}
+
+
+/* Header styles */
+#top-header {
+  background-color: var(--header-text-color);
+  padding: 10px 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-.inv-box a {
-  height: 170px;
+#top-header a {
+  color: var(--text-color);
+  text-decoration: none;
 }
-.inv-box a img {
+
+#top-header a:hover {
+  color: var(--secondary-color);
+}
+
+#top-header .siteName a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+#tools a {
+  font-weight: 700;
+}
+/* hero section */
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  text-align: center; 
+}
+
+.hero img {
   width: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.inv-box p {
-  text-align: center;
-  width: 100%;
-}
-
-
-/*======== Procuct Display ============*/
-
-#product-display {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  align-items: start;
-}
-
-#product-display img {
-  grid-column: 1;
-  width: 80%;
   height: auto;
-  padding: 20px;
+  max-width: 100%; 
+}
+
+.hero-text {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  color: #FF3333;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
   border-radius: 5px;
 }
 
-.product-details {
-  grid-column: 2;
-  font-size: 1.3rem;
-  padding: 20px;
+
+main > h3 {
+  padding-top: 20px;
+  padding-bottom: 0;
+  padding-left: 30px;
 }
 
-/*======== Login  =====================*/
- 
-form {
-  background-color: #fff;
-  width: 400px;
-  padding: 20px;
-  padding-left: 40px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-}
-
-label {
+.hero-text .button-image img {
   display: block;
+  margin-top: 10px;
+  width: 100px;
+}
+
+
+/* body section  */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+}
+
+.upgrades, .reviews {
+  flex: 1;
+  min-width: 300px;
+}
+
+.upgrades h3, .reviews h3 {
+  text-align: center;
+}
+
+.upgrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+}
+
+.card img {
+  width: 50px;
+  height: auto;
+}
+
+.card a p {
+  color: var(--header-text-color);
+  text-decoration: none;
+}
+
+.card a p:hover {
+  text-decoration: underline;
+}
+
+.reviews {
+  padding: 10px;
+}
+
+.reviews h3 {
+  margin-bottom: 10px;
+}
+
+.reviews ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.reviews ul li {
   margin-bottom: 5px;
 }
+/* footer section  */
 
-input {
-  width: 100%;
+footer {
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-}
-input:required {
-  border-left: 3px solid rgba(0, 208, 255, 0.063);
-}
-
-input:valid {
-  border-left: 3px solid rgba(20, 184, 221, 0.934);
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007BFF;
-  color: #fff;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-form h2{
   text-align: center;
-  margin-bottom: 20px;
-
+  background-color: var(--primary-color);
+  color: var(--header-text-color);
 }
-
-#classificationList {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  background-color: #f8f8f8;
-  font-size: 16px;
-}
-
-#classificationList option {
-  padding: 10px;
-}
-
-
-#inventoryDisplay {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-#inventoryDisplay th, #inventoryDisplay td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#inventoryDisplay tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#inventoryDisplay tr:hover {
-  background-color: #ddd;
-}
-
-#inventoryDisplay th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-
-noscript {
-  color: red;
-  font-size: 20px;
-  text-align: center;
-}
-
-
-/*======== Media Queries ============= */
-
-@media screen and (max-width: 800px){
-  body{
-    width: 90%;
+/* -----Car display queries for different screen sizes----- */
+/* Responsive Design */
+@media (max-width: 1200px) {
+  #inv-display li {
+    width: calc(50% - 20px); 
   }
-  #home-grid{
-    grid-template-columns: 1fr;
+}
+
+@media (max-width: 768px) {
+  #inv-display li {
+    width: calc(100% - 20px); 
   }
-  .upgrade-box{
-    width: 80%;
-  }
-  h1{
-    font-size: 2rem;
-  }
-  nav ul{
-    margin-left: 5%;
-  }
-  nav li{
-    margin: 3%;
-  }
-  .hero-box {
-    margin-left: 5%;
-    width: 30%;
-    font-size: 1rem;
-    height: 45%;
+}
+
+/* styles for large screen */
+@media (min-width: 37.5em) {
+  h1 {
+      font-size: 2.5rem;
+      margin-left: 0;
+      text-align: center;
   }
 
-  #product-display {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-    align-items: start;
+  h2 {
+      font-size: 2rem;
+      text-align: center;
   }
-  #product-display img {
-    grid-column: 2;
-    width: 80%;
-    height: auto;
+
+  .navigation {
+    flex-direction: row;
+}
+
+.navigation a {
+    flex: 1;
+}
+
+  .upgrades {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  /* ----------error mesage and error page style--------- */
+  .error-container {
+    background-image: url('/images/site/404-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.error-container h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.error-message {
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
-    border-radius: 5px;
-  }
-  
+    border-radius: 10px;
 }
-@media screen and (max-width: 600px) {
-  body {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    border: none;
-  }
-  #tools{
-    top: 10px;
-  }
-  nav ul {
-    margin-left: 0;
-  }
-  .hero-box{
-    width: 40%;
+
+.error-message p {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .error-container h1 {
+      font-size: 2em;
   }
 
+  .error-message p {
+      font-size: 1em;
+  }
+}
 
+/* styles for the datials.ejs page  */
+.vehicle-detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.vehicle-detail img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .vehicle-detail {
+    flex-direction: column;
+  }
+}
+
+
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('/images/site/checkerboard.jpg');
+    background-size: cover;
+    /* background-position: center;
+    background-repeat: no-repeat;  */
+  
+  }
+
+  #wrapper {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1000px;
+      border: 3px solid var(--secondary-color)
+  }
 }

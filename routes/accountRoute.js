@@ -1,58 +1,39 @@
 const express = require("express");
-const router = new express.Router();
-const utilities = require("../utilities/index");
+const router = express.Router();
 const accountController = require("../controllers/accountController");
-const regValidate = require("../utilities/account-validation");
+const utilities = require("../utilities/index");
 const checkAuth = require("../middleware/auth");
 
+// Rutas para la cuenta
 router.get("/login", accountController.buildLogin);
 router.get("/register", accountController.buildRegister);
 router.post(
   "/register",
-  regValidate.registationRules(),
-  regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 );
-
-router.post(
-  "/login",
-  regValidate.loginRules(),
-  regValidate.checkLoginData,
-  utilities.handleErrors(accountController.accountLogin)
-);
-
-router.get("/account", accountController.buildAccManager);
-
+router.post("/login", utilities.handleErrors(accountController.accountLogin));
+router.get("/logout", accountController.logout);
 router.get(
   "/",
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildAccManager)
 );
 
-// Ruta para mostrar la vista de actualización de cuenta
+// Rutas para actualizar cuenta
 router.get(
   "/update/:account_id",
   checkAuth,
   utilities.handleErrors(accountController.getUpdateAccountView)
 );
-
-// Ruta para procesar la actualización de la cuenta
 router.post(
   "/update",
   checkAuth,
   utilities.handleErrors(accountController.updateAccount)
 );
-
-// Ruta para procesar el cambio de contraseña
 router.post(
   "/change-password",
   checkAuth,
   utilities.handleErrors(accountController.changePassword)
 );
-
-router.get("/logout", (req, res) => {
-  res.clearCookie("token");
-  res.redirect("/");
-});
 
 module.exports = router;

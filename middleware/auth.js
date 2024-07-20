@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
-const secret = process.env.SESSION_SECRET; // Cargar la clave secreta desde las variables de entorno
+const secret = process.env.SESSION_SECRET;
 
 function checkAuth(req, res, next) {
   const token = req.cookies.token;

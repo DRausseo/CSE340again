@@ -1,6 +1,4 @@
 const invModel = require("../models/inventory-model");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const Util = {};
 
 /* ************************
@@ -9,6 +7,7 @@ const Util = {};
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications();
   let list = "<ul>";
+  // console.log(data) --this line of code can help you see the data that is executed and displayed.
   list += '<li><a href="/" title="Home page">Home</a></li>';
   data.rows.forEach((row) => {
     list += "<li>";
@@ -22,13 +21,9 @@ Util.getNav = async function (req, res, next) {
       "</a>";
     list += "</li>";
   });
-
   list += "</ul>";
-
   return list;
 };
-
-module.exports = Util;
 
 /* **************************************
  * Build the classification view HTML
@@ -38,7 +33,7 @@ Util.buildClassificationGrid = async function (data) {
   if (data.length > 0) {
     grid = '<ul id="inv-display">';
     data.forEach((vehicle) => {
-      grid += '<li class= "inv-box">';
+      grid += "<li>";
       grid +=
         '<a href="../../inv/detail/' +
         vehicle.inv_id +
@@ -83,96 +78,47 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
-/* **************************************
- * Build the inventory view HTML
- * ************************************ */
-Util.buildInventoryDisplay = async function (data) {
-  let display = "";
-  data.forEach((vehicle) => {
-    display += '<div id="product-display">';
-    display +=
-      '<img src="' +
-      vehicle.inv_image +
-      '" alt="Image of ' +
-      vehicle.inv_make +
-      '">';
-    display += '<div class="product-details">';
-    display += "<h2>" + vehicle.inv_make + " " + vehicle.inv_year + "</h2>";
-    display +=
-      "<p>Price: $" +
-      new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
-      "</p>";
-    display += "<p>" + vehicle.inv_description + "</p>";
-    display +=
-      "<p>Miles: " +
-      new Intl.NumberFormat("en-US").format(vehicle.inv_miles) +
-      "</p>";
-    display += "<p>Color: " + vehicle.inv_color + "</p>";
-    display += "</div></div>";
-  });
-  return display;
-};
+/* **************************
+ * Build vehicle detail HTML
+ * ************************* */
+Util.buildVehicleDetail = function (data) {
+  let detail = '<div class="vehicle-detail">';
 
-Util.handleErrors = function (fn) {
-  return function (req, res, next) {
-    fn(req, res, next).catch(next);
-  };
-};
+  detail += "<h1>" + data.inv_make + " " + data.inv_model + "</h1>";
+  detail +=
+    '<img src="' +
+    data.inv_image +
+    '" alt="Image of ' +
+    data.inv_make +
+    " " +
+    data.inv_model +
+    '">';
 
-// Build the add classification List
-Util.buildClassificationList = async function (classification_id = null) {
-  let data = await invModel.getClassifications();
-  let classificationList =
-    '<select name="classification_id" id="classificationList" required>';
-  classificationList += "<option value=''>Choose a Classification</option>";
-  data.rows.forEach((row) => {
-    classificationList += '<option value="' + row.classification_id + '"';
-    if (
-      classification_id != null &&
-      row.classification_id == classification_id
-    ) {
-      classificationList += " selected ";
-    }
-    classificationList += ">" + row.classification_name + "</option>";
-  });
-  classificationList += "</select>";
-  return classificationList;
+  detail += "<h2>Details</h2>";
+  detail += "<p><strong>Make:</strong> " + data.inv_make + "</p>";
+  detail += "<p><strong>Model:</strong> " + data.inv_model + "</p>";
+  detail += "<p><strong>Year:</strong> " + data.inv_year + "</p>";
+  detail +=
+    "<p><strong>Price:</strong> $" +
+    new Intl.NumberFormat("en-US").format(data.inv_price) +
+    "</p>";
+  detail +=
+    "<p><strong>Mileage:</strong> " +
+    new Intl.NumberFormat("en-US").format(data.inv_mileage) +
+    " miles</p>";
+  detail += "<p><strong>Description:</strong> " + data.inv_description + "</p>";
+
+  detail += "</div>";
+
+  return detail;
 };
 
 /* ****************************************
- * Middleware to check token validity
+ * Middleware For Handling Errors
+ * Wrap other function in this for
+ * General Error Handling
  **************************************** */
-Util.checkJWTToken = (req, res, next) => {
-  if (req.cookies.jwt) {
-    jwt.verify(
-      req.cookies.jwt,
-      process.env.ACCESS_TOKEN_SECRET,
-      function (err, accountData) {
-        if (err) {
-          req.flash("Please log in");
-          res.clearCookie("jwt");
-          return res.redirect("/account/login");
-        }
-        res.locals.accountData = accountData;
-        res.locals.loggedin = 1;
-        next();
-      }
-    );
-  } else {
-    next();
-  }
-};
-
-/* ****************************************
- *  Check Login
- * ************************************ */
-Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
-    next();
-  } else {
-    req.flash("notice", "Please log in.");
-    return res.redirect("/account/login");
-  }
-};
+Util.handleErrors = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);
 
 module.exports = Util;

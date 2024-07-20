@@ -4,27 +4,19 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-// Function to build the login view
-async function buildLogin(req, res, next) {
+// Función para construir la vista de inicio de sesión
+async function buildLogin(req, res) {
   let nav = await utilities.getNav();
-  res.render("account/login", {
-    title: "Login",
-    nav,
-    errors: null,
-  });
+  res.render("account/login", { title: "Login", nav, errors: null });
 }
 
-// Function to build the registration view
-async function buildRegister(req, res, next) {
+// Función para construir la vista de registro
+async function buildRegister(req, res) {
   let nav = await utilities.getNav();
-  res.render("account/register", {
-    title: "Register",
-    nav,
-    errors: null,
-  });
+  res.render("account/register", { title: "Register", nav, errors: null });
 }
 
-// Function to process registration
+// Función para procesar el registro
 async function registerAccount(req, res) {
   let nav = await utilities.getNav();
   const {
@@ -34,96 +26,97 @@ async function registerAccount(req, res) {
     account_password,
   } = req.body;
 
-  let hashedPassword;
   try {
-    hashedPassword = await bcrypt.hashSync(account_password, 10);
+    const hashedPassword = await bcrypt.hash(account_password, 10);
+    const regResult = await accountModel.registerAccount(
+      account_firstname,
+      account_lastname,
+      account_email,
+      hashedPassword
+    );
+
+    if (regResult) {
+      req.flash(
+        "notice",
+        `Congratulations, you are registered ${account_firstname}. Please log in.`
+      );
+      res
+        .status(201)
+        .render("account/login", { title: "Login", nav, errors: null });
+    } else {
+      req.flash("notice", "Sorry, the registration failed.");
+      res
+        .status(501)
+        .render("account/register", { title: "Register", nav, errors: null });
+    }
   } catch (error) {
     req.flash(
       "notice",
       "Sorry, there was an error processing the registration."
     );
-    return res.status(500).render("account/register", {
-      title: "Register",
-      nav,
-      errors: null,
-    });
-  }
-
-  const regResult = await accountModel.registerAccount(
-    account_firstname,
-    account_lastname,
-    account_email,
-    hashedPassword
-  );
-
-  if (regResult) {
-    req.flash(
-      "notice",
-      `Congratulations, you are registered ${account_firstname}. Please log in.`
-    );
-    return res.status(201).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null,
-    });
-  } else {
-    req.flash("notice", "Sorry, the registration failed.");
-    return res.status(501).render("account/register", {
-      title: "Register",
-      nav,
-      errors: null,
-    });
+    res
+      .status(500)
+      .render("account/register", { title: "Register", nav, errors: null });
   }
 }
 
-// Function to process login
+// Función para procesar el inicio de sesión
 async function accountLogin(req, res) {
   let nav = await utilities.getNav();
   const { account_email, account_password } = req.body;
   const accountData = await accountModel.getAccountByEmail(account_email);
+
   if (!accountData) {
     req.flash("notice", "Please check your credentials and try again.");
-    return res.status(400).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null,
-      account_email,
-    });
+    res
+      .status(400)
+      .render("account/login", {
+        title: "Login",
+        nav,
+        errors: null,
+        account_email,
+      });
+    return;
   }
+
   try {
     if (await bcrypt.compare(account_password, accountData.account_password)) {
       delete accountData.account_password;
       const accessToken = jwt.sign(accountData, process.env.SESSION_SECRET, {
-        expiresIn: 3600,
+        expiresIn: "1h",
       });
       res.cookie("token", accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 3600 * 1000,
       });
-      return res.redirect("/account");
+      res.redirect("/account");
     } else {
       req.flash("notice", "Please check your credentials and try again.");
-      return res.status(400).render("account/login", {
+      res
+        .status(400)
+        .render("account/login", {
+          title: "Login",
+          nav,
+          errors: null,
+          account_email,
+        });
+    }
+  } catch (error) {
+    req.flash("error", "Login failed.");
+    res
+      .status(500)
+      .render("account/login", {
         title: "Login",
         nav,
         errors: null,
         account_email,
       });
-    }
-  } catch (error) {
-    req.flash("error", "Login failed.");
-    return res.status(500).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null,
-      account_email,
-    });
   }
 }
 
-// Function to build the account management view
-async function buildAccManager(req, res, next) {
+// Función para construir la vista de gestión de cuentas
+async function buildAccManager(req, res) {
   let nav = await utilities.getNav();
   res.render("account/account-manager", {
     title: "Account Manager",
@@ -132,14 +125,14 @@ async function buildAccManager(req, res, next) {
   });
 }
 
-// Function to deliver the update account view
+// Función para entregar la vista de actualización de cuenta
 async function getUpdateAccountView(req, res) {
   const account_id = parseInt(req.params.account_id);
   const client = await accountModel.getAccountById(account_id);
   res.render("account/update-account", { title: "Update Account", client });
 }
 
-// Function to handle the account update
+// Función para manejar la actualización de cuenta
 async function updateAccount(req, res) {
   const { account_id, firstname, lastname, email } = req.body;
   const result = await accountModel.updateAccount(
@@ -157,7 +150,7 @@ async function updateAccount(req, res) {
   }
 }
 
-// Function to handle the password change
+// Función para manejar el cambio de contraseña
 async function changePassword(req, res) {
   const { account_id, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -171,6 +164,12 @@ async function changePassword(req, res) {
   }
 }
 
+// Función para manejar el cierre de sesión
+async function logout(req, res) {
+  res.clearCookie("token");
+  res.redirect("/");
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
@@ -180,4 +179,5 @@ module.exports = {
   getUpdateAccountView,
   updateAccount,
   changePassword,
+  logout,
 };

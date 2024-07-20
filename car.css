@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #040c14;
+    --secondary-color: #FF3333;
+    --accent-color: #C0C0C0;
+    --background-color: #F5F5F5;
+    --text-color: #333333;
+    --header-text-color: #FFFFFF;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+h1 {
+    text-align: left;
+    font-family: times, serif;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+nav {
+    width: 100%;
+    margin: 5px auto;
+    padding: 5px;
+}
+
+.navigation {
+    display: flex;
+    list-style: none;
+    background-color: #333;
+    color: #fff;
+}
+
+.navigation a {
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--header-text-color);
+    flex: 1;
+}
+
+.navigation .active {
+    background-color: var(--secondary-color);
+}
+
+/* Header styles */
+#top-header {
+    background-color: var(--header-text-color);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top-header a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#top-header a:hover {
+    color: var(--secondary-color);
+}
+
+#top-header .siteName a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+#tools a {
+    font-weight: 700;
+}
+/* hero section */
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    max-width: 100%; 
+}
+
+.hero-text {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: #FF3333;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+main > h3 {
+    padding-top: 20px;
+    padding-bottom: 0;
+    padding-left: 30px;
+}
+
+.hero-text .button-image img {
+    display: block;
+    margin-top: 10px;
+    width: 100px;
+}
+
+
+/* body section  */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+}
+
+.upgrades, .reviews {
+    flex: 1;
+    min-width: 300px;
+}
+
+.upgrades h3, .reviews h3 {
+    text-align: center;
+}
+
+.upgrades {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.card {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
+
+.card img {
+    width: 50px;
+    height: auto;
+}
+
+.card a p {
+    color: var(--header-text-color);
+    text-decoration: none;
+}
+
+.card a p:hover {
+    text-decoration: underline;
+}
+
+.reviews {
+    padding: 10px;
+}
+
+.reviews h3 {
+    margin-bottom: 10px;
+}
+
+.reviews ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.reviews ul li {
+    margin-bottom: 5px;
+}
+/* footer section  */
+
+footer {
+    padding: 10px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--header-text-color);
+}
+
+/* styles for large screen */
+@media (min-width: 37.5em) {
+    h1 {
+        font-size: 2.5rem;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .navigation {
+        flex-direction: row;
+    }
+
+    .navigation a {
+        display: block;
+        flex: 1 1 100%;
+    }
+
+    .upgrades {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    body{display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('/public/images/site/checkerboard.jpg');
+    background-size: cover;
+    /* background-position: center;
+    background-repeat: no-repeat; */
+    
+    }
+
+    .wrapper {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        width: 80%;
+        max-width: 800px;
+        border: 3px solid var(--secondary-color)
+    }
+}
