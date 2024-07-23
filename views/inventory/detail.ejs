@@ -1,4 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <h1><%= vehicle.inv_make %> <%= vehicle.inv_model %></h1>
+    <p>Year: <%= vehicle.inv_year %></p>
+    <p>Price: <%= vehicle.inv_price %></p>
+    <p>Description: <%= vehicle.inv_description %></p>
+    <img src="/images/vehicles/<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
+    
+    <h2>Comments</h2>
+    <ul>
+        <% comments.forEach(comment => { %>
+            <li>
+                <p><strong><%= comment.account_firstname %> <%= comment.account_lastname %>:</strong> <%= comment.comment_text %></p>
+                <p><em><%= comment.comment_date %></em></p>
+            </li>
+        <% }) %>
+    </ul>
 
-<!-- This displays the details view when it is clicked on -->
-<%- vehicleDetailHTML %>
+    <h3>Add a Comment</h3>
+    <form action="/comments/add" method="POST">
+        <input type="hidden" name="vehicle_id" value="<%= vehicle.inv_id %>">
+        <input type="hidden" name="user_id" value="<%= user_id %>">
+        <textarea name="comment_text" required></textarea>
+        <button type="submit">Add Comment</button>
+    </form>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
+
+
+
  

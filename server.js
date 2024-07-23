@@ -22,11 +22,16 @@ app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
 
 /* ***********************
+ * Serve Static Files
+ *************************/
+app.use(express.static(path.join(__dirname, "public")));
+
+/* ***********************
  * Routes
  *************************/
 app.use(static);
 
-//Index Route
+// Index Route
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Inventory routes
@@ -37,36 +42,33 @@ app.use(async (req, res, next) => {
   next({ status: 404, message: "Sorry, we appear to have lost that page." });
 });
 
-// middleware to catch and handle errors
-app.use((err, req, res, next) => {
-  res.status(500).render("error", { title: "500 Error", message: err.message });
-});
-
 /* ***********************
- * Express Error Handler
- * Place after all other middleware
+ * Middleware to catch and handle errors
  *************************/
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav();
   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
   if (err.status == 404) {
-    message = err.message;
+    res.status(404).render("errors/error", {
+      title: "404 Error",
+      message: "Sorry, we appear to have lost that page.",
+      nav,
+    });
   } else {
-    message = "Oh no! There was a crash. Maybe try a different route?";
+    res.status(500).render("errors/error", {
+      title: "500 Error",
+      message: "Oh no! There was a crash. Maybe try a different route?",
+      nav,
+    });
   }
-  res.render("errors/error", {
-    title: err.status || "Server Error",
-    message,
-    nav,
-  });
 });
 
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT;
-const host = process.env.HOST;
+const port = process.env.PORT || 5500;
+const host = process.env.HOST || "localhost";
 
 /* ***********************
  * Log statement to confirm server operation
